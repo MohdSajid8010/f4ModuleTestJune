@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-
-function App() {
+import HomePage from './Component/HomePage';
+import Detailpost from "./Component/Detailpost"
+import { Routes, Route } from 'react-router-dom';
+const App = () => {
+  let [id, setId] = useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+      <Routes>
+        <Route path='/' element={<HomePage setId={setId}/>} />
+        <Route path={`/item/${id}`} element={<Detailpost />} />
+      </Routes>
+
+
     </div>
   );
 }
